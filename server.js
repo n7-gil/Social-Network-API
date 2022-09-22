@@ -8,3 +8,21 @@ const app = express();
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(routes);
+
+db.once("open", () => {
+  app.listen(PORT, () => {
+    console.log(`API server for ${activity} running on port ${PORT}!`);
+  });
+});
+
+app.get("/users"),
+  (req, res) => {
+    User.find({}, (err, result) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(200).json(result);
+      }
+    });
+  };
