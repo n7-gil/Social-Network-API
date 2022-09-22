@@ -1,8 +1,6 @@
 const express = require("express");
 const db = require("./config/connection");
 
-const { User } = require("./models");
-
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -15,14 +13,3 @@ db.once("open", () => {
     console.log(`API server for ${activity} running on port ${PORT}!`);
   });
 });
-
-app.get("/users"),
-  (req, res) => {
-    User.find({}, (err, result) => {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.status(200).json(result);
-      }
-    });
-  };
