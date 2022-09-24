@@ -8,9 +8,9 @@ const thoughtSchema = new Schema(
       maxLength: 280,
     },
     createdAt: {
-      type: Date,
-      default: Date.now,
-      get: (Date) => timeSince(Date),
+      type: date,
+      default: date.now,
+      get: (date) => timeSince(date),
     },
     username: {
       type: String,
