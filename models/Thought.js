@@ -1,4 +1,4 @@
-const { Schema, Types } = require("mongoose");
+const { Schema, model } = require("mongoose");
 
 const thoughtSchema = new Schema(
   {
@@ -8,9 +8,9 @@ const thoughtSchema = new Schema(
       maxLength: 280,
     },
     createdAt: {
-      type: date,
-      default: date.now,
-      get: (date) => timeSince(date),
+      type: Date,
+      default: Date.now,
+      get: (Date) => timeSince(Date),
     },
     username: {
       type: String,
@@ -31,10 +31,10 @@ const thoughtSchema = new Schema(
   }
 );
 
-userSchema.virtual("reactionCount").get(function () {
+thoughtSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
 
-const Thought = model("thought", userSchema);
+const Thought = model("thought", thoughtSchema);
 
 module.exports = Thought;

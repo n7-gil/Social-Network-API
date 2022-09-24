@@ -1,4 +1,4 @@
-const { Thought, User } = require('../models');
+const { Thought, User, } = require('../models');
 
 // get all thoughts
 module.exports = {
@@ -43,7 +43,7 @@ module.exports = {
     // update a thought
     updateThought(req, res) {
         Thought.findOneandUpdate(
-            { _id: req.params.courseId },
+            { _id: req.params.userId },
             { $set: req.body },
             { runValidators: true, new: true }
         )

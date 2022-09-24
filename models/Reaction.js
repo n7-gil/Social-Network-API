@@ -15,8 +15,10 @@ const reactionSchema = new Schema({
     required: true,
   },
   createdAt: {
-    type: date,
-    default: date.now,
+    type: Date,
+    default: Date.now,
     get: (date) => timeSince(date),
   },
 });
+
+module.exports = reactionSchema;
